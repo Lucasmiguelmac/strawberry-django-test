@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     
     # Project apps
     'users',
+    'fruits',
 
     # Third party apps
     'corsheaders'
