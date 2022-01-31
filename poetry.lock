@@ -288,6 +288,18 @@ sanic = ["sanic (>=20.12.2,<22.0.0)"]
 
 [[package]]
 category = "main"
+description = "Strawberry GraphQL Django extension"
+name = "strawberry-graphql-django"
+optional = false
+python-versions = ">=3.7,<4.0"
+version = "0.2.5"
+
+[package.dependencies]
+Django = ">=3.0"
+strawberry-graphql = ">=0.69.0"
+
+[[package]]
+category = "main"
 description = "Backported and Experimental Type Hints for Python 3.6+"
 name = "typing-extensions"
 optional = false
@@ -324,7 +336,7 @@ docs = ["Sphinx (>=4.1.2,<4.2.0)", "sphinxcontrib-asyncio (>=0.3.0,<0.4.0)", "sp
 test = ["aiohttp", "flake8 (>=3.9.2,<3.10.0)", "psutil", "pycodestyle (>=2.7.0,<2.8.0)", "pyOpenSSL (>=19.0.0,<19.1.0)", "mypy (>=0.800)"]
 
 [metadata]
-content-hash = "6926fa2d2fb7bc83adb756d49b3cc76153a2080c36ab3fff0b8cf80e66e36339"
+content-hash = "94093184c5d57200ed7db209a61c92fbdd27ac2a53c82557f2b6db51f369d9d8"
 python-versions = "^3.10"
 
 [metadata.files]
@@ -502,6 +514,10 @@ starlette = [
 strawberry-graphql = [
     {file = "strawberry-graphql-0.95.0.tar.gz", hash = "sha256:8bd0815be11db80c1fe99dfb47d5a0d02867a8970f6a148033351068b8628b13"},
     {file = "strawberry_graphql-0.95.0-py3-none-any.whl", hash = "sha256:cfc737d6b1cfcd6c1eb4d785f6be9b37eeec3de52bb45c8a51a8a93e71e30be4"},
+]
+strawberry-graphql-django = [
+    {file = "strawberry-graphql-django-0.2.5.tar.gz", hash = "sha256:483d97c24ce440a1e3cb92ec3e1fdc0cf534d9afa79600396b0a27a5d9d97793"},
+    {file = "strawberry_graphql_django-0.2.5-py3-none-any.whl", hash = "sha256:dee8011bf074c618b7ddab0a92d0832b0ceea2dcb69ee422003a98e4a28c14d6"},
 ]
 typing-extensions = [
     {file = "typing_extensions-4.0.1-py3-none-any.whl", hash = "sha256:7f001e5ac290a0c0401508864c7ec868be4e701886d5b573a9528ed3973d9d3b"},
