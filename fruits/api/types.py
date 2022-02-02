@@ -37,3 +37,7 @@ class UpdateFruitInput:
     name: Optional[str] = UNSET
     color: Optional[str] = UNSET
     amount: Optional[int] = UNSET
+
+@strawberry.django.input(models.Fruit)
+class DeleteFruitInput:
+    id: strawberry.ID

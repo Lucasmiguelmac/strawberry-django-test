@@ -1,3 +1,4 @@
+from copy import deepcopy
 from asgiref.sync import sync_to_async
 from django.shortcuts import get_object_or_404
 import strawberry
@@ -36,19 +37,14 @@ def update_fruit(
     )
     return fruit_obj
 
-
-# def update_fruit(
-#     self, fruit_obj: Fruit,
-# )
-
-
-# def update_fruit(
-#     self, name: str=None, color: str=None, amount: int=None, obj_id: int=None 
-# ) -> types.Fruit:
-#     updated_fruit_dict = {k:v for (k, v) in locals()["args"].items() if v}
-#     fruit_obj = Fruit.objects.get(id=obj_id)        
-#     color = updated_fruit_dict.get("color", False)
-#     if color:
-#         color_obj = Color.objects.get_or_create(name=color)[0]
-#         return fruit_obj.update(**updated_fruit_dict, color=color_obj)
-#     return fruit_obj.update(**updated_fruit_dict)
+@sync_to_async
+def delete_fruit(
+    self, info: Info, data: types.DeleteFruitInput
+) -> types.Fruit:
+    fruit_obj: models.Fruit = get_object_or_404(
+        models.Fruit,
+        pk=int(data.id)
+    )
+    deleted_obj = deepcopy(fruit_obj)
+    fruit_obj.delete()
+    return deleted_obj

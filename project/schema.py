@@ -1,12 +1,7 @@
-from functools import partial
-import inspect
-from asgiref.sync import sync_to_async
 import strawberry
 from typing import List
 
 from fruits.api import types, resolvers
-from fruits.models import Color, Fruit
-
 
 @strawberry.type
 class Query:
@@ -15,12 +10,14 @@ class Query:
 @strawberry.type
 class Mutation:
 
-    create_fruit: Fruit = strawberry.mutation(
+    create_fruit: types.Fruit = strawberry.mutation(
         resolver=resolvers.create_fruit
     )
-    update_fruit: Fruit = strawberry.mutation(
+    update_fruit: types.Fruit = strawberry.mutation(
         resolver=resolvers.update_fruit
     )
-    
+    delete_fruit: types.Fruit = strawberry.mutation(
+        resolver=resolvers.delete_fruit
+    )
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
