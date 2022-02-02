@@ -7,8 +7,9 @@ def data_to_dict(data: Any) -> dict:
     valid_items = {}
 
     for key, value in asdict(data).items():
-        if is_unset(value):
+        if is_unset(value) or key == "id":
             continue
-        valid_items[key] = value
-
+        else:
+            valid_items[key] = value
+            
     return valid_items

@@ -18,6 +18,9 @@ class Mutation:
     create_fruit: Fruit = strawberry.mutation(
         resolver=resolvers.create_fruit
     )
+    update_fruit: Fruit = strawberry.mutation(
+        resolver=resolvers.update_fruit
+    )
     
 
 schema = strawberry.Schema(query=Query, mutation=Mutation)
