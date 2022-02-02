@@ -1,4 +1,5 @@
 from asgiref.sync import sync_to_async
+from django.shortcuts import get_object_or_404
 import strawberry
 from strawberry.types import Info
 
@@ -23,9 +24,7 @@ def update_fruit(
     self, info: Info, data: types.UpdateFruitInput
 ) -> types.Fruit:
     fruit_data: dict = data_to_dict(data)
-    fruit_obj: models.Fruit = models.Fruit.objects.filter(
-        pk=int(data.id)
-    ).first()
+    fruit_obj: models.Fruit = get_object_or_404(models.Fruit, pk=int(data.id))
     if data.color:
         fruit_data["color"] = models.Color.objects.get_or_create(
             name=data.color
