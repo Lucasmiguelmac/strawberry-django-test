@@ -1,11 +1,23 @@
+from functools import partial
+import inspect
+from asgiref.sync import sync_to_async
 import strawberry
 from typing import List
 
-from fruits.api.types import Fruit
+from fruits.api import types, resolvers
+from fruits.models import Color, Fruit
 
 
 @strawberry.type
 class Query:
-    fruits: List[Fruit] = strawberry.django.field()
+    fruits: List[types.Fruit] = strawberry.django.field()
 
-schema = strawberry.Schema(query=Query)
+@strawberry.type
+class Mutation:
+
+    create_fruit: Fruit = strawberry.mutation(
+        resolver=resolvers.create_fruit
+    )
+    
+
+schema = strawberry.Schema(query=Query, mutation=Mutation)

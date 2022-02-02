@@ -8,6 +8,7 @@ class Fruit(models.Model):
         related_name='fruits',
         on_delete=models.CASCADE
     )
+    amount = models.IntegerField()
 
 class Color(models.Model):
     name = models.CharField(max_length=20)
