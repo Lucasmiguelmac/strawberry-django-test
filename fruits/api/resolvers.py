@@ -48,3 +48,10 @@ def delete_fruit(
     deleted_obj = deepcopy(fruit_obj)
     fruit_obj.delete()
     return deleted_obj
+
+
+@sync_to_async
+def fruit(
+    self, info: Info, data: types.RetrieveFruitInput
+) -> types.Fruit:
+    return models.Fruit.objects.filter(pk=data.id).first()

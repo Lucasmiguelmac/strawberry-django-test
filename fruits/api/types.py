@@ -41,3 +41,7 @@ class UpdateFruitInput:
 @strawberry.django.input(models.Fruit)
 class DeleteFruitInput:
     id: strawberry.ID
+
+@strawberry.django.input(models.Fruit)
+class RetrieveFruitInput:
+    id: strawberry.ID

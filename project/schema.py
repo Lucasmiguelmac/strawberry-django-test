@@ -1,4 +1,5 @@
 import strawberry
+import strawberry_django
 from typing import List
 
 from fruits.api import types, resolvers
@@ -6,6 +7,7 @@ from fruits.api import types, resolvers
 @strawberry.type
 class Query:
     fruits: List[types.Fruit] = strawberry.django.field()
+    fruit: types.Fruit = strawberry.field(resolver=resolvers.fruit)
 
 @strawberry.type
 class Mutation:
